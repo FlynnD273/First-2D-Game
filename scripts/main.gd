@@ -2,10 +2,12 @@ extends Node
 
 @export var mob_scene: PackedScene
 @export var mob_spawn: PathFollow2D
+var mob_spawn_parent: Path2D
 var score: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	mob_spawn_parent = mob_spawn.get_parent()
 	return
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -44,7 +46,7 @@ func _on_mob_timer_timeout() -> void:
 	var direction: float = mob_spawn.rotation + PI / 2
 	direction += randf_range(-PI / 4, PI / 4)
 	
-	mob.position = mob_spawn.position
+	mob.position = mob_spawn.global_position
 	mob.rotation = direction
 	
 	var velocity: Vector2 = Vector2(randf_range(150, 250), 0)

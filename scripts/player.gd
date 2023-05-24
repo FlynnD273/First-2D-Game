@@ -6,7 +6,7 @@ signal hit
 var screen_size: Vector2 # The size of the game window
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	hide()
 	$CollisionShape2D.disabled = true
 	screen_size = get_viewport_rect().size
@@ -18,7 +18,7 @@ func start(pos : Vector2):
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta) -> void:
 	var velocity: Vector2 = Vector2.ZERO
 	
 	velocity = Input.get_vector("move_left", "move_right", "move_up", "move_down")
